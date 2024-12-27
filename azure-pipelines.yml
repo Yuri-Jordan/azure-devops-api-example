@@ -21,7 +21,7 @@ steps:
     version: '8.x'
 
 - script: dotnet restore $(solution)
-  displayName: 'Restore solution $(solution)'
+  displayName: 'Restore solution'
 
 - script: dotnet build $(solution) --configuration $(buildConfiguration)
-  displayName: 'Build solution $(solution)'
+  displayName: 'Build solution'
