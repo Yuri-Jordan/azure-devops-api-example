@@ -25,3 +25,13 @@ steps:
 
 - script: dotnet build $(solution) --configuration $(buildConfiguration)
   displayName: 'Build solution'
+
+- script: dotnet test $(solution) --configuration $(buildConfiguration) --no-build --collect:"Xplat Code Coverage"
+  displayName: 'Test solution'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'acrazure204dio'
+    repository: 'api-clima-test'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
